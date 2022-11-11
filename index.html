@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CocktailApp</title>
+    <link rel="stylesheet" href="css/normalize.css">
+    <link rel="stylesheet" href="css/screen.css">
+
+    <script src="script/app.js"></script>
+    <script src="script/dataHandler.js"></script>
+
+</head>
+<body>
+
+    <header class="c-header">
+        <!-- <div class="c-header__search"> -->
+            <div class="c-header__search">
+                <input class="c-search__input js-search" type="text" placeholder="Search...">
+                <div class="c-search__btn"></div>
+              </div>
+            <!-- <input class="c-input js-search" placeholder="Search by cocktail name" type="text" name="" id="">
+            <button class="c-search">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="11" cy="11" r="8"></circle>
+                    <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                </svg>
+            </button>
+        </div> -->
+    </header>
+    <nav class="c-nav">
+        <div class="c-navList">
+            <div class="c-navItem js-nav__item c-nav__item-selected" data-filterG="1">Cocktail Name</div>
+            <div class="c-navItem js-nav__item" data-filterG="2">Ingrendient Name</div>
+            <div class="c-navItem js-nav__random" data-filterG="3">Random Cocktail</div>
+        </div>
+    </nav>
+    <section class="o-container">
+        <div class="o-grid js-cocktailList">
+            <div class="c-cocktail__item"> <!-- voor de ctrl z -->
+                <div class="cocktail__item-inner">
+                    <div class="c-cocktail__item-front">
+                        <div>
+                            <img class="c-cocktail__image" src="https://www.thecocktaildb.com/images/media/drink/ruxuvp1472669600.jpg" alt="" height="100%">
+                        </div>
+                        <div class="c-cocktail__name">
+                            Vodka Redbull
+                        </div>
+                    </div>
+                    <div class="cocktail__item-back">
+                        
+                        <h5>Cocktail Glass</h5>
+                        Glass
+                        <h5>Ingrendient</h5>
+                        1
+                        <h5>Instructions</h5>
+                        instr
+
+                    </div>
+                </div>
+            </div>
+            <div class="c-cocktail__item"> <!-- voor de ctrl z -->
+                <div class="cocktail__item-inner">
+                    <div class="c-cocktail__item-front">
+                        <div>
+                            <img class="c-cocktail__image" src="https://www.thecocktaildb.com/images/media/drink/ruxuvp1472669600.jpg" alt="" height="100%">
+                        </div>
+                        <div class="c-cocktail__name">
+                            Vodka Redbull
+                        </div>
+                    </div>
+                    <div class="cocktail__item-back">
+                        test
+                    </div>
+                </div>
+            </div>
+        </div>    
+    </section>
+</body>
+</html>

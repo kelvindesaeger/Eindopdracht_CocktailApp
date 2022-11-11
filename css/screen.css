@@ -1,0 +1,378 @@
+/*------------------------------------*\
+  #FONTS
+\*------------------------------------*/
+
+@font-face {
+    font-family: "Inter UI Web";
+    font-weight: 400;
+    src: url("../fonts/Inter-UI-Regular.woff2") format("woff2")
+}
+
+@font-face {
+    font-family: "Inter UI Web";
+    font-weight: 600;
+    src: url("../fonts/Inter-UI-Medium.woff2") format("woff2")
+}
+
+@font-face {
+    font-family: "Inter UI Web";
+    font-weight: 700;
+    src: url("../fonts/Inter-UI-Bold.woff2") format("woff2")
+}
+
+
+
+/*------------------------------------*\
+  #GENERIC
+\*------------------------------------*/
+
+/*
+    Generic: Page
+    ---
+    Global page styles + universal box-sizing:
+*/
+
+:root{
+    --global-primary: #1BBB65;
+    --global-inversecolor: #fff;
+    --global-active: #1F6F52;
+}
+
+html{
+    font-family: "Inter UI Web", Helvetica, arial, sans-serif;
+}
+
+h5{
+    margin-bottom: 4px;
+}
+
+::selection {
+    background: #1F6F52;
+    color: white;
+    text-shadow: none;
+}
+
+/*------------------------------------*\
+  #OBJECTS
+\*------------------------------------*/
+
+.o-container {
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 90em; /* 90 * 16px = 1440px */
+}
+
+
+/*
+    layout
+*/
+
+.o-layout {
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+    .o-layout__item {
+        width: 100%;
+    }
+
+/* gutter modifiers, these affect o-layout__item too */
+
+.o-layout--gutter {
+    margin: 0 -12px;
+}
+
+.o-layout--gutter > .o-layout__item {
+    padding: 0 12px;
+}
+
+.o-layout--gutter-sm {
+    margin: 0 -6px;
+}
+
+.o-layout--gutter-sm > .o-layout__item {
+    padding: 0 6px;
+}
+
+.o-layout--gutter-lg {
+    margin: 0 -24px;
+}
+
+.o-layout--gutter-lg > .o-layout__item {
+    padding: 0 24px;
+}
+
+.o-layout--gutter-xl {
+    margin: 0 -48px;
+}
+
+.o-layout--gutter-xl > .o-layout__item {
+    padding: 0 48px;
+}
+
+/* reverse horizontal row modifier */
+
+.o-layout--row-reverse {
+    flex-direction: row-reverse;
+}
+
+.o-grid{
+    display: grid;
+    /* grid-template-columns: 1fr 1fr 1fr; */
+}
+
+
+/*------------------------------------*\
+  #COMPONENTS
+\*------------------------------------*/
+
+.c-header{
+    width: 100%;
+    /* background-color: var(--global-primary); */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.c-header__search{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 16px;
+    height: 28px;   
+}
+
+
+
+
+
+.c-search__btn {
+    position: absolute;
+    margin: auto;
+    /* top: 0; */
+    /* right: 0; */
+    /* bottom: 0; */
+    /* left: 0; */
+    width: 36px;
+    height: 36px;
+    background: var(--global-primary);
+    border-radius: 50%;
+    transition: all 1s;
+    z-index: 4;
+    /* box-shadow: 0 0 25px 0 rgba(0, 0, 0, 0.4); */
+    /* box-shadow: 0 0 25px 0 crimson; */
+}
+
+.c-search__btn:hover {
+    cursor: pointer;
+}
+
+/* Magnify icon handle */
+.c-search__btn::before {
+    content: "";
+    position: absolute;
+    margin: auto;
+    top: 16px;
+    right: 0;
+    bottom: 0;
+    left: 16px;
+    width: 10px;
+    height: 2px;
+    background: var(--global-inversecolor);
+    transform: rotate(45deg);
+    transition: all .5s;
+}
+
+/* Magnify icon glass */
+.c-search__btn::after {
+    content: "";
+    position: absolute;
+    margin: auto;
+    top: -4px;
+    right: 0;
+    bottom: 0;
+    left: -4px;
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    border: 2px solid var(--global-inversecolor);
+    transition: all 0.5s;
+}
+
+.c-search__input {
+    /* position: absolute; */
+    /* margin: auto; */
+    /* top: 0; */
+    /* right: 0; */
+    /* bottom: 0; */
+    /* left: 0; */
+    width: 100%;
+    height: 34px;
+    /* /border-bottom: 1px solid rgba(255, 255, 255, 0.2); */
+    border: 2px solid var(--global-primary);
+    padding: 0 80px 0 20px;
+    border-radius: 30px;
+    transition: all .5s;
+    opacity: 0;
+    z-index: 5;
+}
+
+.c-search__input:hover {
+    cursor: pointer;
+}
+
+.c-search__input:focus {
+    /* width: 300px; */
+    opacity: 1;
+    cursor: text;
+}
+
+/* Active button styling */
+.c-search__input:focus ~ .c-search__btn {
+    /* left: 80%;    */
+    right: 16px;
+    background: var(--global-primary);
+    z-index: 6;
+}
+
+/* Close icon piece */
+.c-search__input:focus ~ .c-search__btn::before {
+    top: 0;
+    left: 0;
+    width: 25px;
+}
+
+/* Close icon piece */
+.c-search__input:focus ~ .c-search__btn::after {
+    top: 0;
+    left: 0;
+    width: 25px;
+    height: 2px;
+    border: none;
+    background: var(--global-inversecolor);
+    border-radius: 0%;
+    transform: rotate(-45deg);
+}
+
+.c-search__input::placeholder {
+    color: white;
+    opacity: 0.5;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+.c-input {
+    width: 100%;
+    border: 1px solid var(--global-inversecolor);
+    border-radius: 20px 0 0 20px;
+    padding: unset;
+    height: -webkit-fill-available;
+    padding-left: 8px;
+}
+
+.c-search {
+    background-color: var(--global-inversecolor);
+    color: var(--global-primary);
+    border-radius: 0 20px 20px 0;
+    border: none;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    padding: 8px
+}
+
+input:focus-visible {
+    outline: transparent;
+}
+
+.c-nav{
+    width: 100%;
+    background-color: var(--global-primary);
+}
+
+.c-navList{
+    margin-left: 16px;
+    margin-right: 16px;
+    padding-top: 8px;
+    padding-bottom: 8px;
+    /* background-color: yellowgreen; */
+    display: flex;
+    justify-content: space-between;
+    overflow-x: hidden;
+}
+
+.c-navItem{
+    background-color: var(--global-inversecolor);
+    /* color: var(--global-primary); */
+    /* width: 95px; */
+    border: 1px solid var(--global-inversecolor);
+    border-radius: 20px;
+    font-size: 12px;
+    text-align: center;
+    padding: 4px;
+}
+
+.c-nav__item-selected{
+    background-color: black;
+}
+
+
+
+
+.c-cocktail__item{
+    max-width: 296px;
+    height: 400px;/*toegevoegd voor card flip*/
+    padding-top: 16px;
+    padding-left: 5.5px;
+    border-radius: 20px;
+    border: 1px solid var(--global-primary);
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+    margin: 16px;
+    perspective: 1000px;
+}
+
+.c-cocktail__image{
+    height: 290px;
+    border-radius: 20px;
+}
+
+.c-cocktail__name{
+    text-align: center;
+    padding: 16px;
+}
+
+.cocktail__item-inner{
+    position: relative;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    transition: transform 0.8s;
+    transform-style: preserve-3d;
+}
+.c-cocktail__item-front, .c-cocktail__item-back{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    -webkit-backface-visibility: hidden; /* Safari */
+    backface-visibility: hidden;
+}
+
+.c-cocktail__item-back{
+    transform: rotateY(180deg);
+}
+
+.c-cocktail__item:hover .cocktail__item-inner {
+    transform: rotateY(180deg);
+  }
