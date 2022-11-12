@@ -9,7 +9,7 @@ const getCardHtml = function(jsonObject){
     let html = '';
     jsonObject.forEach(element => { 
         let listIngredient = getIngredients(element);
-        html += `<div class="c-cocktail__item">
+        html += `<div class="c-cocktail__item" tabindex="0">
         <div class="cocktail__item-inner">
             <div class="c-cocktail__item-front">
                 <div>
@@ -193,12 +193,12 @@ const listenToFilter = function(){
             console.log(filt.getAttribute('data-filterG'));
             
             for(let filtStyle of filters){
-                if(filtStyle.classList.contains("c-nav__item-selected")){
-                    filtStyle.classList.remove("c-nav__item-selected");
+                if(filtStyle.classList.contains("c-nav__list-item--active")){
+                    filtStyle.classList.remove("c-nav__list-item--active");
                 }
             }
-            if(filterRandom.classList.contains("c-nav__item-selected")){
-                filterRandom.classList.remove("c-nav__item-selected");
+            if(filterRandom.classList.contains("c-nav__list-item--active")){
+                filterRandom.classList.remove("c-nav__list-item--active");
             }
 
             filter = filt.getAttribute('data-filterG');
@@ -212,7 +212,7 @@ const listenToFilter = function(){
             }
 
             
-            filt.classList.add("c-nav__item-selected");
+            filt.classList.add("c-nav__list-item--active");
         });
     }
     
@@ -220,8 +220,8 @@ const listenToFilter = function(){
         console.log(filterRandom.getAttribute('data-filterG'));
             
         for(let filtStyle of filters){
-            if(filtStyle.classList.contains("c-nav__item-selected")){
-                filtStyle.classList.remove("c-nav__item-selected");
+            if(filtStyle.classList.contains("c-nav__list-item--active")){
+                filtStyle.classList.remove("c-nav__list-item--active");
             }
         }
 
@@ -232,7 +232,7 @@ const listenToFilter = function(){
             input.placeholder='Search Random Cocktail';
         }
 
-        filterRandom.classList.add("c-nav__item-selected");
+        filterRandom.classList.add("c-nav__list-item--active");
 
         getRandomCocktail();
     });
