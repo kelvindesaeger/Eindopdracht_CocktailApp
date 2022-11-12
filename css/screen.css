@@ -33,16 +33,9 @@
 */
 
 :root{
-    --global-primary: #1BBB65;
+    --global-primary: #139B5D;
     --global-inversecolor: #fff;
-    --global-active: #1F6F52;
-
-    --global-color-alpha-light: #4F95FF;
-    --global-color-alpha: #3385FF; 
-    --global-color-alpha-dark: #2E77E6;
-    --global-color-alpha-x-dark: #1B4186;
-    --global-color-transparent: 0 0 0 3px #3385ff4D;
-    --global-color-x-transparent: 0 2px 4px #b1b1b14b;  
+    --global-active: #0D6D42; 
 
     /*  white colors*/
     --global-color-neutral-xxxxx-light: #FFFFFF;
@@ -143,6 +136,7 @@ h5{
 .o-grid{
     display: grid;
     /* grid-template-columns: 1fr 1fr 1fr; */
+    background-color: var(--global-color-neutral-xxxx-light);
 }
 
 
@@ -164,20 +158,20 @@ h5{
     justify-content: center;
     align-items: center;
     padding: 16px;
-    height: 28px;   
+    /* height: 28px; */
+    background-color: var(--global-color-neutral-xxxx-light);
 }
 
-
+.c-header__logo {
+    height: 36px;
+    margin-right: 16px;
+}
 
 
 
 .c-search__btn {
     position: absolute;
-    margin: auto;
-    /* top: 0; */
-    /* right: 0; */
-    /* bottom: 0; */
-    /* left: 0; */
+    right: 16px;
     width: 36px;
     height: 36px;
     background: var(--global-primary);
@@ -321,35 +315,47 @@ input:focus-visible {
 
 .c-nav {
     width: 100%;
-    /* background-color: var(--global-primary); */
+    background-color: var(--global-color-neutral-xxxx-light);
 }
 
-.c-navList {
+.c-nav__box {
     margin-left: 16px;
     margin-right: 16px;
-    padding-top: 8px;
-    padding-bottom: 8px;
     /* background-color: yellowgreen; */
     display: flex;
     justify-content: space-between;
     overflow-x: hidden;
+    /* border: 1px solid red; */
+    padding: 0px;
 }
 
-.c-navItem {
-    background-color: var(--global-inversecolor);
-    /* color: var(--global-primary); */
-    /* width: 95px; */
-    border: 1px solid var(--global-primary);
-    border-radius: 20px;
-    font-size: 12px;
+.c-nav__list{
+    list-style: none;
+    /* border: 1px solid hotpink; */
+    width: 100%;
+    padding: 0px;
+}
+
+.c-nav__list-item{
+    float: left;
+    width: 32.33%;
+    /* border: 1px solid greenyellow; */
+    padding-top: 16px;
+    padding-bottom: 16px;
     text-align: center;
-    padding: 4px;
+    font-weight: 600;
+    border-bottom: 1px solid var(--global-color-neutral-light);
+    color: var(--global-color-neutral-light);
 }
 
-.c-nav__item-selected {
-    background-color: var(--global-active);
-    color: var(--global-inversecolor)
+.c-nav__list-item--active{
+    color: var(--global-active);
+    border-bottom: 2px solid var(--global-active);
 }
+
+
+
+
 
 
 
@@ -359,10 +365,11 @@ input:focus-visible {
     height: 468px;/*toegevoegd voor card flip*/
     padding-top: 16px;
     border-radius: 20px;
-    border: 1px solid var(--global-primary);
+    /* border: 1px solid var(--global-primary); */
     box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
     margin: 16px;
     perspective: 1000px;
+    background-color: var(--global-inversecolor);
 }
 
 .c-cocktail__image{
@@ -395,9 +402,14 @@ input:focus-visible {
     transform: rotateY(180deg);
 }
 
-.c-cocktail__item:hover .cocktail__item-inner {
+.c-cocktail__item:hover .cocktail__item-inner, .c-cocktail__item:focus .cocktail__item-inner {
     transform: rotateY(180deg);
-  }
+}
+
+.c-cocktail__item:focus-visible {
+    outline: var(--global-active);
+    border: 1px solid var(--global-active);
+}
 
 
 
