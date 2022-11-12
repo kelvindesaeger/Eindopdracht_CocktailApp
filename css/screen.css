@@ -36,10 +36,32 @@
     --global-primary: #1BBB65;
     --global-inversecolor: #fff;
     --global-active: #1F6F52;
+
+    --global-color-alpha-light: #4F95FF;
+    --global-color-alpha: #3385FF; 
+    --global-color-alpha-dark: #2E77E6;
+    --global-color-alpha-x-dark: #1B4186;
+    --global-color-transparent: 0 0 0 3px #3385ff4D;
+    --global-color-x-transparent: 0 2px 4px #b1b1b14b;  
+
+    /*  white colors*/
+    --global-color-neutral-xxxxx-light: #FFFFFF;
+    --global-color-neutral-xxxx-light: #f5faf6;
+    --global-color-neutral-xxx-light: #e2e7e3; 
+    --global-color-neutral-xx-light: #cad4cc;
+    --global-color-neutral-x-light: #b5c0c0;
+    --global-color-neutral-light: #a0ada1;
+    --global-color-neutral: #8b9a8c;
+    --global-color-neutral-dark: #758777;
+    --global-color-neutral-x-dark: #607462;
+    --global-color-neutral-xx-dark: #4b604c;
+    --global-color-neutral-xxx-dark: #354d37;
+    --global-color-neutral-xxxx-dark: #203a22;
 }
 
 html{
     font-family: "Inter UI Web", Helvetica, arial, sans-serif;
+    color: var(--global-color-neutral-xxxx-dark);
 }
 
 h5{
@@ -297,12 +319,12 @@ input:focus-visible {
     outline: transparent;
 }
 
-.c-nav{
+.c-nav {
     width: 100%;
-    background-color: var(--global-primary);
+    /* background-color: var(--global-primary); */
 }
 
-.c-navList{
+.c-navList {
     margin-left: 16px;
     margin-right: 16px;
     padding-top: 8px;
@@ -313,29 +335,29 @@ input:focus-visible {
     overflow-x: hidden;
 }
 
-.c-navItem{
+.c-navItem {
     background-color: var(--global-inversecolor);
     /* color: var(--global-primary); */
     /* width: 95px; */
-    border: 1px solid var(--global-inversecolor);
+    border: 1px solid var(--global-primary);
     border-radius: 20px;
     font-size: 12px;
     text-align: center;
     padding: 4px;
 }
 
-.c-nav__item-selected{
-    background-color: black;
+.c-nav__item-selected {
+    background-color: var(--global-active);
+    color: var(--global-inversecolor)
 }
 
 
 
 
-.c-cocktail__item{
-    max-width: 296px;
-    height: 400px;/*toegevoegd voor card flip*/
+.c-cocktail__item {
+    /* max-width: 296px; niet tijdens gsm */
+    height: 468px;/*toegevoegd voor card flip*/
     padding-top: 16px;
-    padding-left: 5.5px;
     border-radius: 20px;
     border: 1px solid var(--global-primary);
     box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
@@ -376,3 +398,38 @@ input:focus-visible {
 .c-cocktail__item:hover .cocktail__item-inner {
     transform: rotateY(180deg);
   }
+
+
+
+.c-chart {
+    font-weight: 700;
+    width: 100%;
+    height: 100px;
+    position: relative;
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    box-sizing: border-box;
+    overflow: hidden;
+    --percentage: 50;
+}
+
+.c-chart:after {
+    content: '';
+    position: absolute;
+    margin: auto;
+    top: 0;
+    width: 150px;
+    height: 150px;
+    border: 28px solid;
+    border-color: var(--global-primary) var(--global-primary) var(--global-active) var(--global-active);
+    border-radius: 50%;
+    transform: rotate(calc(1deg * (-45  + var(--percentage) * 1.8)));
+}
+
+.c-chart__label {
+    display: flex;
+    width: 220px;
+    margin: auto;
+    justify-content: space-between;
+}

@@ -18,12 +18,17 @@ const getCardHtml = function(jsonObject){
                 <div class="c-cocktail__name">
                     ${element.strDrink}
                 </div>
+                <div class="c-chart" style="--percentage: ${listIngredient[1]*10}">${listIngredient[1]} <br> Ingredients</div>
+                <div class="c-chart__label">
+                    <div>Easy</div>
+                    <div>Hard</div>
+                </div>
             </div>
             <div class="c-cocktail__item-back">
                 <h5>Cocktail Glass</h5>
                 ${element.strGlass}
                 <h5>Ingrendient</h5>
-                ${listIngredient}
+                ${listIngredient[0]}
                 <h5>Instructions</h5>
                 ${element.strInstructions}
             </div>
@@ -36,7 +41,9 @@ const getCardHtml = function(jsonObject){
 
 const getIngredients = function (element){
     var listIngredient = '';
+    var listLength = 0;
     if(element.strIngredient1 != null){
+        listLength = 1;
         if(element.strMeasure1 != null){
             listIngredient += `${element.strMeasure1} ${element.strIngredient1}<br>`;
         }else{
@@ -44,6 +51,7 @@ const getIngredients = function (element){
         }
     }
     if(element.strIngredient2 != null){
+        listLength = 2;
         if(element.strMeasure2 != null){
             listIngredient += `${element.strMeasure2} ${element.strIngredient2}<br>`;
         }else{
@@ -51,6 +59,7 @@ const getIngredients = function (element){
         }
     }
     if(element.strIngredient3 != null){
+        listLength = 3;
         if(element.strMeasure3 != null){
             listIngredient += `${element.strMeasure3} ${element.strIngredient3}<br>`;
         }else{
@@ -58,6 +67,7 @@ const getIngredients = function (element){
         }
     }
     if(element.strIngredient4 != null){
+        listLength = 4;
         if(element.strMeasure4 != null){
             listIngredient += `${element.strMeasure4} ${element.strIngredient4}<br>`;
         }else{
@@ -65,6 +75,7 @@ const getIngredients = function (element){
         }
     }
     if(element.strIngredient5 != null){
+        listLength = 5;
         if(element.strMeasure5 != null){
             listIngredient += `${element.strMeasure5} ${element.strIngredient5}<br>`;
         }else{
@@ -72,6 +83,7 @@ const getIngredients = function (element){
         }
     }
     if(element.strIngredient6 != null){
+        listLength = 6;
         if(element.strMeasure6 != null){
             listIngredient += `${element.strMeasure6} ${element.strIngredient6}<br>`;
         }else{
@@ -79,6 +91,7 @@ const getIngredients = function (element){
         }
     }
     if(element.strIngredient7 != null){
+        listLength = 7;
         if(element.strMeasure7 != null){
             listIngredient += `${element.strMeasure7} ${element.strIngredient7}<br>`;
         }else{
@@ -86,6 +99,7 @@ const getIngredients = function (element){
         }
     }
     if(element.strIngredient8 != null){
+        listLength = 8;
         if(element.strMeasure8 != null){
             listIngredient += `${element.strMeasure8} ${element.strIngredient8}<br>`;
         }else{
@@ -93,13 +107,14 @@ const getIngredients = function (element){
         }
     }
     if(element.strIngredient9 != null){
+        listLength = 9;
         if(element.strMeasure9 != null){
             listIngredient += `${element.strMeasure9} ${element.strIngredient9}<br>`;
         }else{
             listIngredient += `${element.strIngredient9}<br>`;
         }
     }
-    return listIngredient;
+    return [listIngredient, listLength];
 };
 
 
