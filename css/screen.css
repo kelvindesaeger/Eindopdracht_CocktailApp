@@ -155,8 +155,6 @@ h5{
 .c-header__search{
     width: 100%;
     display: flex;
-    justify-content: center;
-    align-items: center;
     padding: 16px;
     /* height: 28px; */
     background-color: var(--global-color-neutral-xxxx-light);
@@ -165,6 +163,7 @@ h5{
 .c-header__logo {
     height: 36px;
     margin-right: 16px;
+    left: 0;
 }
 
 
@@ -219,17 +218,17 @@ h5{
 }
 
 .c-search__input {
-    /* position: absolute; */
+    position: absolute;
     /* margin: auto; */
     /* top: 0; */
-    /* right: 0; */
+    right: 16px;
     /* bottom: 0; */
     /* left: 0; */
-    width: 100%;
+    width: 0%;
     height: 34px;
     /* /border-bottom: 1px solid rgba(255, 255, 255, 0.2); */
     border: 2px solid var(--global-primary);
-    padding: 0 80px 0 20px;
+    padding: 0 0px 0 20px;
     border-radius: 30px;
     transition: all .5s;
     opacity: 0;
@@ -240,8 +239,10 @@ h5{
     cursor: pointer;
 }
 
+
 .c-search__input:focus {
-    /* width: 300px; */
+    width: 200px; /* tijdelijk op vaste pixel, moet nog flexibel op 100%*/
+    padding: 0 80px 0 20px;
     opacity: 1;
     cursor: text;
 }
@@ -289,25 +290,7 @@ h5{
 
 
 
-.c-input {
-    width: 100%;
-    border: 1px solid var(--global-inversecolor);
-    border-radius: 20px 0 0 20px;
-    padding: unset;
-    height: -webkit-fill-available;
-    padding-left: 8px;
-}
 
-.c-search {
-    background-color: var(--global-inversecolor);
-    color: var(--global-primary);
-    border-radius: 0 20px 20px 0;
-    border: none;
-    height: 100%;
-    display: flex;
-    align-items: center;
-    padding: 8px
-}
 
 input:focus-visible {
     outline: transparent;
@@ -321,6 +304,7 @@ input:focus-visible {
 .c-nav__box {
     margin-left: 16px;
     margin-right: 16px;
+    margin-top: -24px;
     /* background-color: yellowgreen; */
     display: flex;
     justify-content: space-between;
@@ -337,20 +321,25 @@ input:focus-visible {
 }
 
 .c-nav__list-item{
+    font-size: 12px;
     float: left;
-    width: 32.33%;
+    width: 33.33%;
     /* border: 1px solid greenyellow; */
     padding-top: 16px;
     padding-bottom: 16px;
     text-align: center;
     font-weight: 600;
-    border-bottom: 1px solid var(--global-color-neutral-light);
+    border-bottom: 2px solid var(--global-color-neutral-light);
     color: var(--global-color-neutral-light);
+    line-height: 16.1px;
+    
 }
 
 .c-nav__list-item--active{
     color: var(--global-active);
     border-bottom: 2px solid var(--global-active);
+    transition: all .25s ease;
+    font-weight: 700;
 }
 
 
