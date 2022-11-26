@@ -144,8 +144,20 @@ const showCocktailsByIngridient = function(jsonObject){
 // ************* callback No show methods **************
 
 const callBackNothingFound = function(){
-    document.querySelector('.js-cocktailList').innerHTML = "Geen cocktails gevonden";
+    var htmlError = document.querySelector('.js-cocktailList');
+    var value = document.querySelector(".js-search").value;
+    if(filter == 1){
+        htmlError.innerHTML = `Geen cocktail gevonden met de naam ${value}`;
+    }
+    else if(filter == 2){
+        htmlError.innerHTML = `Geen cocktail gevonden met het ingrenient ${value}`;
+    }
+    else{
+        htmlError.innerHTML = `Geen cocktail gevonden`;
+    }
 };
+
+
 
 
 // ************* get methods **************

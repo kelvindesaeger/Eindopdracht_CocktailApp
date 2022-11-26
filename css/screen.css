@@ -55,6 +55,7 @@
 html{
     font-family: "Inter UI Web", Helvetica, arial, sans-serif;
     color: var(--global-color-neutral-xxxx-dark);
+    background-color: var(--global-color-neutral-xxxx-light);
 }
 
 h5{
@@ -74,7 +75,7 @@ h5{
 .o-container {
     margin-left: auto;
     margin-right: auto;
-    max-width: 90em; /* 90 * 16px = 1440px */
+    max-width: 60em; /* 60 * 16px = 1440px */
 }
 
 
@@ -133,10 +134,18 @@ h5{
     flex-direction: row-reverse;
 }
 
+
 .o-grid{
     display: grid;
-    /* grid-template-columns: 1fr 1fr 1fr; */
-    background-color: var(--global-color-neutral-xxxx-light);
+}
+@media screen and (min-width:767px) {
+    .o-grid{
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        column-gap: 16px;
+        row-gap: 16px;
+        justify-content: center;
+    }    
 }
 
 
@@ -144,6 +153,9 @@ h5{
   #COMPONENTS
 \*------------------------------------*/
 
+/*
+    header components
+*/
 .c-header{
     width: 100%;
     /* background-color: var(--global-primary); */
@@ -154,10 +166,10 @@ h5{
 
 .c-header__search{
     width: 100%;
+    max-width: 60em; /* 60 * 16px = 1440px */
     display: flex;
     padding: 16px;
     /* height: 28px; */
-    background-color: var(--global-color-neutral-xxxx-light);
 }
 
 .c-header__logo {
@@ -167,6 +179,10 @@ h5{
 }
 
 
+
+/*
+    search bar components
+*/
 
 .c-search__btn {
     position: absolute;
@@ -299,6 +315,9 @@ input:focus-visible {
 .c-nav {
     width: 100%;
     background-color: var(--global-color-neutral-xxxx-light);
+    max-width: 60em; /* 60 * 16px = 1440px */
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .c-nav__box {
@@ -332,7 +351,12 @@ input:focus-visible {
     border-bottom: 2px solid var(--global-color-neutral-light);
     color: var(--global-color-neutral-light);
     line-height: 16.1px;
-    
+}
+
+@media screen and (min-width:767px) {
+    .c-nav__list-item {
+        font-size: 16px;
+    }
 }
 
 .c-nav__list-item--active{
@@ -345,20 +369,28 @@ input:focus-visible {
 
 
 
-
-
-
-
 .c-cocktail__item {
-    /* max-width: 296px; niet tijdens gsm */
     height: 468px;/*toegevoegd voor card flip*/
     padding-top: 16px;
+    padding-bottom: 16px;
     border-radius: 20px;
-    /* border: 1px solid var(--global-primary); */
     box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
     margin: 16px;
     perspective: 1000px;
     background-color: var(--global-inversecolor);
+}
+@media screen and (min-width:767px) {
+    .c-cocktail__item {
+        margin: 0px;
+        padding-left: 16px;
+        padding-right: 16px;
+    }
+
+    .c-cocktail__image{
+        height: none;
+        width: 100%;
+        border-radius: 20px;
+    }
 }
 
 .c-cocktail__image{
@@ -388,8 +420,12 @@ input:focus-visible {
 }
 
 .c-cocktail__item-back{
+    overflow-y: scroll;
     transform: rotateY(180deg);
 }
+.c-cocktail__item-back::-webkit-scrollbar {
+    display: none;
+  }
 
 .c-cocktail__item:hover .cocktail__item-inner, .c-cocktail__item:focus .cocktail__item-inner {
     transform: rotateY(180deg);
