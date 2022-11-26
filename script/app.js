@@ -147,10 +147,18 @@ const callBackNothingFound = function(){
     var htmlError = document.querySelector('.js-cocktailList');
     var value = document.querySelector(".js-search").value;
     if(filter == 1){
-        htmlError.innerHTML = `Geen cocktail gevonden met de naam ${value}`;
+        htmlError.innerHTML = `<div class="c-noName">
+        <img class="c-noName__img" src="./img/searchCocktailByName.png" />
+        <p>Sorry we couldn't find a cocktail that matches the name: <b>${value}</b></p>
+        <p class="c-noName__text">Please try searching with another term.</p>
+    </div>`;
     }
     else if(filter == 2){
-        htmlError.innerHTML = `Geen cocktail gevonden met het ingrenient ${value}`;
+        htmlError.innerHTML = `<div class="c-noName">
+        <img class="c-noName__img" src="./img/searchCocktailByIngredient.png" />
+        <p>Sorry we couldn't find a cocktail with an ingredient that matches: <b>${value}</b></p>
+        <p class="c-noName__text">Please try searching with another term.</p>
+    </div>`;
     }
     else{
         htmlError.innerHTML = `Geen cocktail gevonden`;

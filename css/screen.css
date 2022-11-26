@@ -68,6 +68,26 @@ h5{
     text-shadow: none;
 }
 
+::-webkit-scrollbar {
+    width: 8px;
+  }
+  
+  /* Track */
+  ::-webkit-scrollbar-track {
+    border-radius: 20px;
+  }
+   
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+    background: var(--global-primary); 
+    border-radius: 20px;
+  }
+  
+  /* Handle on hover */
+  ::-webkit-scrollbar-thumb:hover {
+    background: var(--global-active); 
+  }
+
 /*------------------------------------*\
   #OBJECTS
 \*------------------------------------*/
@@ -170,6 +190,7 @@ h5{
     display: flex;
     padding: 16px;
     /* height: 28px; */
+    position: relative;
 }
 
 .c-header__logo {
@@ -244,7 +265,7 @@ h5{
     height: 34px;
     /* /border-bottom: 1px solid rgba(255, 255, 255, 0.2); */
     border: 2px solid var(--global-primary);
-    padding: 0 0px 0 20px;
+    padding: 0 0px 0 36px;
     border-radius: 30px;
     transition: all .5s;
     opacity: 0;
@@ -257,10 +278,15 @@ h5{
 
 
 .c-search__input:focus {
-    width: 200px; /* tijdelijk op vaste pixel, moet nog flexibel op 100%*/
+    width: 40%; /* tijdelijk op vaste pixel, moet nog flexibel op 100%*/
     padding: 0 80px 0 20px;
     opacity: 1;
     cursor: text;
+}
+@media screen and (min-width:767px) {
+    .c-search__input:focus {
+        width: 20%;
+    }
 }
 
 /* Active button styling */
@@ -351,12 +377,7 @@ input:focus-visible {
     border-bottom: 2px solid var(--global-color-neutral-light);
     color: var(--global-color-neutral-light);
     line-height: 16.1px;
-}
-
-@media screen and (min-width:767px) {
-    .c-nav__list-item {
-        font-size: 16px;
-    }
+    cursor: pointer;
 }
 
 .c-nav__list-item--active{
@@ -364,6 +385,17 @@ input:focus-visible {
     border-bottom: 2px solid var(--global-active);
     transition: all .25s ease;
     font-weight: 700;
+}
+
+@media screen and (min-width:767px) {
+    .c-nav__list-item {
+        font-size: 16px;
+        border-bottom: 3px solid var(--global-color-neutral-light);
+    }
+
+    .c-nav__list-item--active{
+        border-bottom: 3px solid var(--global-active);
+    }
 }
 
 
@@ -469,4 +501,27 @@ input:focus-visible {
     width: 220px;
     margin: auto;
     justify-content: space-between;
+}
+
+.c-noName {
+    grid-column: 1;
+    margin: 16px;
+    text-align: center;
+}
+
+@media screen and (min-width:767px) {
+    .c-noName {
+        grid-column: 2;
+    }
+}
+
+.c-noName__img {
+    height: 140px;
+    margin-top: 80px;
+}
+
+.c-noName__text {
+    margin: auto;
+    color: var(--global-color-neutral-x-light);
+    text-align: center;
 }
