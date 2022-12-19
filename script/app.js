@@ -5,11 +5,14 @@ let filter = 1;
 
 // ************* extra methods **************
 
-const getCardHtml = function(jsonObject){
+const getCardHtml = function(jsonObject, gridColumn = null){
     let html = '';
+    let gridColumnStyle = '';
+    if(gridColumn != null)
+    gridColumnStyle = `grid-column: ${gridColumn.toString()};`;
     jsonObject.forEach(element => { 
         let listIngredient = getIngredients(element);
-        html += `<div class="c-cocktail__item" tabindex="0">
+        html += `<div class="c-cocktail__item" tabindex="0" style="${gridColumnStyle}">
         <div class="cocktail__item-inner">
             <div class="c-cocktail__item-front">
                 <div>
@@ -36,7 +39,6 @@ const getCardHtml = function(jsonObject){
     </div>`;
     });
     return html;
-    //document.querySelector('.js-cocktailList').innerHTML = html;
 };
 
 const getIngredients = function (element){
@@ -120,13 +122,13 @@ const getIngredients = function (element){
 
 
 // ************* callback show methods **************
-const showCocktailsByName = function(jsonObject){
+const showCocktailsByName = function(jsonObject, gridRow){
     console.log(jsonObject.drinks);
-    html = getCardHtml(jsonObject.drinks);
+    html = getCardHtml(jsonObject.drinks, gridRow);
     document.querySelector('.js-cocktailList').innerHTML = html;
 };
 
-const showCocktailsByIngridient = function(jsonObject){
+const showCocktailsByIngridient = function(jsonObject, gridRow){
     console.log(jsonObject);
     let html = '';
     jsonObject.drinks.forEach(element => {
@@ -183,7 +185,7 @@ const getCocktailsByIngridient = function(iName){
 
 const getRandomCocktail = function(){
     url = `https://www.thecocktaildb.com/api/json/v1/1/random.php`;
-    handleData(url, showCocktailsByName, callBackNothingFound);
+    handleData(url, showCocktailsByName, callBackNothingFound, "GET", 2);
 };
 
 

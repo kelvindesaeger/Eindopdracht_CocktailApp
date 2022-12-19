@@ -50,6 +50,21 @@
     --global-color-neutral-xx-dark: #4b604c;
     --global-color-neutral-xxx-dark: #354d37;
     --global-color-neutral-xxxx-dark: #203a22;
+
+    /* whitespace */
+    --global-baseline: 8px;
+    --global-whitespace-xs: calc(var(--global-baseline) / 2); /* = 4px */
+    --global-whitespace-sm: var(--global-baseline); /* = 8px */
+    --global-whitespace-md: calc(var(--global-baseline) * 2); /* = 16px */
+    --global-whitespace: calc(var(--global-baseline) * 3); /* = 24px */
+    --global-whitespace-lg: calc(var(--global-baseline) * 4); /* = 32px */   
+    --global-whitespace-xl: calc(var(--global-baseline) * 6); /* = 48px */ 
+
+    /* Font sizes */
+    --global-fontsize-sm: 0.75rem;
+    --global-fontsize: 1rem;
+    --global-fontsize-lg: 1.125rem;
+
 }
 
 html{
@@ -60,6 +75,8 @@ html{
 
 h5{
     margin-bottom: 4px;
+    font-weight: 600;
+    font-size: var(--global-fontsize-lg);
 }
 
 ::selection {
@@ -67,6 +84,10 @@ h5{
     color: white;
     text-shadow: none;
 }
+
+/*
+    custom scrollbar
+*/
 
 ::-webkit-scrollbar {
     width: 8px;
@@ -88,14 +109,17 @@ h5{
     background: var(--global-active); 
   }
 
+
 /*------------------------------------*\
   #OBJECTS
 \*------------------------------------*/
+
 
 .o-container {
     margin-left: auto;
     margin-right: auto;
     max-width: 60em; /* 60 * 16px = 1440px */
+    padding: 0 var(--global-whitespace-md);
 }
 
 
@@ -110,11 +134,13 @@ h5{
     flex-wrap: wrap;
 }
 
-    .o-layout__item {
-        width: 100%;
-    }
+.o-layout__item {
+    width: 100%;
+}
 
-/* gutter modifiers, these affect o-layout__item too */
+/* 
+    gutter modifiers, these affect o-layout__item too 
+*/
 
 .o-layout--gutter {
     margin: 0 -12px;
@@ -148,12 +174,17 @@ h5{
     padding: 0 48px;
 }
 
-/* reverse horizontal row modifier */
+/*
+    reverse horizontal row modifier
+*/
 
 .o-layout--row-reverse {
     flex-direction: row-reverse;
 }
 
+/*
+    css grid
+*/
 
 .o-grid{
     display: grid;
@@ -162,8 +193,8 @@ h5{
     .o-grid{
         display: grid;
         grid-template-columns: 1fr 1fr 1fr;
-        column-gap: 16px;
-        row-gap: 16px;
+        column-gap: var(--global-whitespace-md);
+        row-gap: var(--global-whitespace-md);
         justify-content: center;
     }    
 }
@@ -176,9 +207,9 @@ h5{
 /*
     header components
 */
+
 .c-header{
     width: 100%;
-    /* background-color: var(--global-primary); */
     display: flex;
     justify-content: center;
     align-items: center;
@@ -188,18 +219,15 @@ h5{
     width: 100%;
     max-width: 60em; /* 60 * 16px = 1440px */
     display: flex;
-    padding: 16px;
-    /* height: 28px; */
+    padding: var(--global-whitespace-md);
     position: relative;
 }
 
 .c-header__logo {
     height: 36px;
-    margin-right: 16px;
+    margin-right: var(--global-whitespace-md);
     left: 0;
 }
-
-
 
 /*
     search bar components
@@ -207,15 +235,13 @@ h5{
 
 .c-search__btn {
     position: absolute;
-    right: 16px;
+    right: var(--global-whitespace-md);
     width: 36px;
     height: 36px;
     background: var(--global-primary);
     border-radius: 50%;
     transition: all 1s;
     z-index: 4;
-    /* box-shadow: 0 0 25px 0 rgba(0, 0, 0, 0.4); */
-    /* box-shadow: 0 0 25px 0 crimson; */
 }
 
 .c-search__btn:hover {
@@ -227,10 +253,10 @@ h5{
     content: "";
     position: absolute;
     margin: auto;
-    top: 16px;
+    top: var(--global-whitespace-md);
     right: 0;
     bottom: 0;
-    left: 16px;
+    left: var(--global-whitespace-md);
     width: 10px;
     height: 2px;
     background: var(--global-inversecolor);
@@ -256,14 +282,9 @@ h5{
 
 .c-search__input {
     position: absolute;
-    /* margin: auto; */
-    /* top: 0; */
-    right: 16px;
-    /* bottom: 0; */
-    /* left: 0; */
+    right: var(--global-whitespace-md);
     width: 0%;
     height: 34px;
-    /* /border-bottom: 1px solid rgba(255, 255, 255, 0.2); */
     border: 2px solid var(--global-primary);
     padding: 0 0px 0 36px;
     border-radius: 30px;
@@ -278,7 +299,7 @@ h5{
 
 
 .c-search__input:focus {
-    width: 40%; /* tijdelijk op vaste pixel, moet nog flexibel op 100%*/
+    width: 40%; 
     padding: 0 80px 0 20px;
     opacity: 1;
     cursor: text;
@@ -291,8 +312,7 @@ h5{
 
 /* Active button styling */
 .c-search__input:focus ~ .c-search__btn {
-    /* left: 80%;    */
-    right: 16px;
+    right: var(--global-whitespace-md);
     background: var(--global-primary);
     z-index: 6;
 }
@@ -321,22 +341,13 @@ h5{
     opacity: 0.5;
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
 input:focus-visible {
     outline: transparent;
 }
+
+/*
+    Navigation components
+*/
 
 .c-nav {
     width: 100%;
@@ -347,31 +358,27 @@ input:focus-visible {
 }
 
 .c-nav__box {
-    margin-left: 16px;
-    margin-right: 16px;
-    margin-top: -24px;
-    /* background-color: yellowgreen; */
+    margin-left: var(--global-whitespace-md);
+    margin-right: var(--global-whitespace-md);
+    margin-top: calc(-1 * var(--global-whitespace));
     display: flex;
     justify-content: space-between;
     overflow-x: hidden;
-    /* border: 1px solid red; */
     padding: 0px;
 }
 
 .c-nav__list{
     list-style: none;
-    /* border: 1px solid hotpink; */
     width: 100%;
     padding: 0px;
 }
 
 .c-nav__list-item{
-    font-size: 12px;
+    font-size: var(--global-fontsize-sm);
     float: left;
     width: 33.33%;
-    /* border: 1px solid greenyellow; */
-    padding-top: 16px;
-    padding-bottom: 16px;
+    padding-top: var(--global-whitespace-md);
+    padding-bottom: var(--global-whitespace-md);
     text-align: center;
     font-weight: 600;
     border-bottom: 2px solid var(--global-color-neutral-light);
@@ -389,7 +396,7 @@ input:focus-visible {
 
 @media screen and (min-width:767px) {
     .c-nav__list-item {
-        font-size: 16px;
+        font-size: var(--global-fontsize);
         border-bottom: 3px solid var(--global-color-neutral-light);
     }
 
@@ -399,29 +406,37 @@ input:focus-visible {
 }
 
 
-
+/*
+    card components
+*/
 
 .c-cocktail__item {
-    height: 468px;/*toegevoegd voor card flip*/
-    padding-top: 16px;
-    padding-bottom: 16px;
+    height: 450px;/*toegevoegd voor card flip*/
+    padding-top: var(--global-whitespace-md);
+    padding-bottom: var(--global-whitespace-md);
     border-radius: 20px;
     box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
-    margin: 16px;
+    margin: var(--global-whitespace-md);
     perspective: 1000px;
     background-color: var(--global-inversecolor);
 }
 @media screen and (min-width:767px) {
     .c-cocktail__item {
         margin: 0px;
-        padding-left: 16px;
-        padding-right: 16px;
+        padding-left: var(--global-whitespace-md);
+        padding-right: var(--global-whitespace-md);
     }
 
-    .c-cocktail__image{
-        height: none;
+    div .c-cocktail__image{
         width: 100%;
+        height: auto;
         border-radius: 20px;
+    }
+}
+/* bug fix random cocktail position */
+@media screen and (max-width:767px) {
+    .c-cocktail__item {
+        grid-column: 1 !important;
     }
 }
 
@@ -432,7 +447,9 @@ input:focus-visible {
 
 .c-cocktail__name{
     text-align: center;
-    padding: 16px;
+    padding: var(--global-whitespace-md);
+    font-size: var(--global-fontsize-lg);
+    font-weight: 600;
 }
 
 .cocktail__item-inner{
@@ -455,9 +472,10 @@ input:focus-visible {
     overflow-y: scroll;
     transform: rotateY(180deg);
 }
+
 .c-cocktail__item-back::-webkit-scrollbar {
     display: none;
-  }
+}
 
 .c-cocktail__item:hover .cocktail__item-inner, .c-cocktail__item:focus .cocktail__item-inner {
     transform: rotateY(180deg);
@@ -468,7 +486,9 @@ input:focus-visible {
     border: 1px solid var(--global-active);
 }
 
-
+/*
+    chart components (chart in card)
+*/
 
 .c-chart {
     font-weight: 700;
@@ -503,9 +523,13 @@ input:focus-visible {
     justify-content: space-between;
 }
 
+/*
+    error handling components
+*/
+
 .c-noName {
     grid-column: 1;
-    margin: 16px;
+    margin: var(--global-whitespace-md);
     text-align: center;
 }
 

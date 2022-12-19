@@ -1,6 +1,6 @@
 'use strict';
 
-const handleData = function (url, callbackFunctionName, callbackErrorFunctionName = null, method = 'GET', body = null) {
+const handleData = function (url, callbackFunctionName, callbackErrorFunctionName = null, method = 'GET', extraVar = null, body = null) {
   fetch(url, {
     method: method,
     body: body,
@@ -25,7 +25,7 @@ const handleData = function (url, callbackFunctionName, callbackErrorFunctionNam
       if (jsonObject) {
         console.info('>> JSONobject is aangemaakt');
         console.info(`>> Callbackfunctie ${callbackFunctionName.name}(response) wordt opgeroepen`);
-        callbackFunctionName(jsonObject);
+        callbackFunctionName(jsonObject, extraVar);
       }
     })
     .catch(function (error) {
