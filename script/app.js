@@ -207,6 +207,7 @@ const listenToFilter = function(){
     let filters = document.querySelectorAll('.js-nav__item');
     let filterRandom = document.querySelector(".js-nav__random");
     let input = document.querySelector('.js-search');
+    let content = document.querySelector(".js-cocktailList");
 
     for(let filt of filters){
         filt.addEventListener('click', function(){
@@ -226,9 +227,19 @@ const listenToFilter = function(){
             //change placeholder
             if(filter == 1){
                 input.placeholder='Search by cocktail name';
+                content.innerHTML = `<div class="c-noName">
+                    <img class="c-noName__img" src="./img/searchCocktailByName.png" />
+                    <h3>What are you searching for?</h3>
+                    <p class="c-noName__text">Search your favorite coktail by name.</p>
+                </div>`;
             }
             else if(filter == 2){
                 input.placeholder='Search by ingredient name';
+                content.innerHTML = `<div class="c-noName">
+                    <img class="c-noName__img" src="./img/searchCocktailByIngredient.png" />
+                    <h3>What are you searching for?</h3>
+                    <p class="c-noName__text">Search your favorite coktail by ingredient name.</p>
+                </div>`;
             }
 
             
