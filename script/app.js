@@ -9,18 +9,19 @@ const getCardHtml = function(jsonObject, gridColumn = null){
     let html = '';
     let gridColumnStyle = '';
     if(gridColumn != null)
-    gridColumnStyle = `grid-column: ${gridColumn.toString()};`;
+        gridColumnStyle = `grid-column: ${gridColumn.toString()};`;
     jsonObject.forEach(element => { 
         let listIngredient = getIngredients(element);
         html += `<div class="c-cocktail__item" tabindex="0" style="${gridColumnStyle}">
         <div class="cocktail__item-inner">
             <div class="c-cocktail__item-front">
-                <div>
+                <div class="c-cocktail__imageFrame">
                     <img class="c-cocktail__image" src="${element.strDrinkThumb}" alt="" height="100%">
                 </div>
                 <div class="c-cocktail__name">
                     ${element.strDrink}
                 </div>
+                
                 <div class="c-chart" style="--percentage: ${listIngredient[1]*10}">${listIngredient[1]} <br> Ingredients</div>
                 <div class="c-chart__label">
                     <div>Easy</div>
@@ -33,7 +34,7 @@ const getCardHtml = function(jsonObject, gridColumn = null){
                 <h5>Ingrendient</h5>
                 ${listIngredient[0]}
                 <h5>Instructions</h5>
-                ${element.strInstructions}
+                <span style="margin=8px;">${element.strInstructions}</span>
             </div>
         </div>
     </div>`;
