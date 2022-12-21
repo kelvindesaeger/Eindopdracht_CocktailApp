@@ -21,17 +21,18 @@ const getCardHtml = function(jsonObject, gridColumn = null){
                 <div class="c-cocktail__name">
                     ${element.strDrink}
                 </div>
-                
-                <div class="c-chart" style="--percentage: ${listIngredient[1]*10}">${listIngredient[1]} <br> Ingredients</div>
-                <div class="c-chart__label">
-                    <div>Easy</div>
-                    <div>Hard</div>
+                <div class="c-chart">
+                    <div class="c-chart__graph" style="--percentage: ${listIngredient[1]*10}">${listIngredient[1]} <br> Ingredients</div>
+                    <div class="c-chart__label">
+                        <div>Easy</div>
+                        <div>Hard</div>
+                    </div>
                 </div>
             </div>
             <div class="c-cocktail__item-back">
                 <h5>Cocktail Glass</h5>
                 ${element.strGlass}
-                <h5>Ingrendient</h5>
+                <h5>Ingredient</h5>
                 ${listIngredient[0]}
                 <h5>Instructions</h5>
                 <span style="margin=8px;">${element.strInstructions}</span>
@@ -152,19 +153,19 @@ const callBackNothingFound = function(){
     if(filter == 1){
         htmlError.innerHTML = `<div class="c-noName">
         <img class="c-noName__img" src="./img/searchCocktailByName.png" />
-        <p>Sorry we couldn't find a cocktail that matches the name: <b>${value}</b></p>
+        <p>Sorry, we couldn't find a cocktail that matches the name: <b>${value}</b></p>
         <p class="c-noName__text">Please try searching with another term.</p>
     </div>`;
     }
     else if(filter == 2){
         htmlError.innerHTML = `<div class="c-noName">
         <img class="c-noName__img" src="./img/searchCocktailByIngredient.png" />
-        <p>Sorry we couldn't find a cocktail with an ingredient that matches: <b>${value}</b></p>
+        <p>Sorry, we couldn't find a cocktail with an ingredient that matches: <b>${value}</b></p>
         <p class="c-noName__text">Please try searching with another term.</p>
     </div>`;
     }
     else{
-        htmlError.innerHTML = `Geen cocktail gevonden`;
+        htmlError.innerHTML = `No cocktail found.`;
     }
 };
 
@@ -216,6 +217,7 @@ const listenToFilter = function(){
         filt.addEventListener('click', function(){
             console.log(filt.getAttribute('data-filterG'));
             
+            //remove active style class
             for(let filtStyle of filters){
                 if(filtStyle.classList.contains("c-nav__list-item--active")){
                     filtStyle.classList.remove("c-nav__list-item--active");
@@ -227,13 +229,13 @@ const listenToFilter = function(){
 
             filter = filt.getAttribute('data-filterG');
 
-            //change placeholder
+            //change placeholder and content
             if(filter == 1){
                 input.placeholder='Search by cocktail name';
                 content.innerHTML = `<div class="c-noName">
                     <img class="c-noName__img" src="./img/searchCocktailByName.png" />
                     <h3>What are you searching for?</h3>
-                    <p class="c-noName__text">Search your favorite coktail by name.</p>
+                    <p class="c-noName__text">Search your favorite cocktail by name.</p>
                 </div>`;
             }
             else if(filter == 2){
@@ -241,11 +243,11 @@ const listenToFilter = function(){
                 content.innerHTML = `<div class="c-noName">
                     <img class="c-noName__img" src="./img/searchCocktailByIngredient.png" />
                     <h3>What are you searching for?</h3>
-                    <p class="c-noName__text">Search your favorite coktail by ingredient name.</p>
+                    <p class="c-noName__text">Search your favorite cocktail by ingredient name.</p>
                 </div>`;
             }
 
-            
+            //add active style class
             filt.classList.add("c-nav__list-item--active");
         });
     }
@@ -253,6 +255,7 @@ const listenToFilter = function(){
     filterRandom.addEventListener('click', function(){
         console.log(filterRandom.getAttribute('data-filterG'));
             
+        //remove avtive class
         for(let filtStyle of filters){
             if(filtStyle.classList.contains("c-nav__list-item--active")){
                 filtStyle.classList.remove("c-nav__list-item--active");
